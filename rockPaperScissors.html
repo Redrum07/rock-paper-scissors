@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+
+            
+            const choice = ["rock" , "paper" , "scissors"];
+            let playerChoice ;
+            let computerSelection ;
+            
+            function playGame(){
+                let i = 5;
+                let playerScore = 0;
+                let compScore = 0; 
+                while (i > 0){
+                    playerChoice = prompt("Rock, Paper , Scissors?","").toLowerCase();
+                    console.log("player choice >>" , playerChoice)
+                    computerSelection = getComputerSelection(choice);
+                    console.log("computer's choice: ",  computerSelection);
+                    let result = playRound(playerChoice,computerSelection);
+                   if(  result == 1) {playerScore += 1;}
+                   else if(result== 0) {compScore += 1;}
+                   i--;
+                }
+                console.log(`PlayerScore : ${playerScore} , Computer Score : ${compScore}`)
+              }
+            
+           playGame();
+
+                function getComputerSelection(arr){
+             
+                 computerSelection = arr[Math.floor(Math.random() * arr.length)];
+                     return computerSelection;    
+
+                }
+           
+                
+       
+           function playRound(playerChoice, computerSelection){
+               
+                if(playerChoice === computerSelection){
+                    console.log("That's a draw!!!");
+                    return -1;
+                }
+                
+                else if ((playerChoice === 'rock' && computerSelection === "paper") ||
+                (playerChoice === 'paper' && computerSelection === "scissors") ||
+                (playerChoice === 'scissors' && computerSelection === "rock"  )  ) {
+                    console.log(`You Lose! ${computerSelection} beats ${playerChoice}`);
+                    return 0;
+                   
+                }
+                else if ((playerChoice === 'paper' && computerSelection === "rock" )||
+                (playerChoice === 'scissors' && computerSelection === "paper" )||
+                (playerChoice === 'rock' && computerSelection === "scissors") ){
+                    console.log(`You Won! ${playerChoice} beats ${computerSelection}`);
+                    return 1;
+                }
+
+            }
+           
+          
+          
+           
+        </script>
+    </body>
+    </html>
+</html>
